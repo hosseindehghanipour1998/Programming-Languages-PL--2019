@@ -48,6 +48,18 @@
 	
 	)
 )
+(define (main)
+	(display 'Answer:)
+	(newline)
+	;(display (matrix_matrix_multiply '( ( 1 2 )) '( (4 5 6) ( 7 8 9)) ))
+	(display (matrix_matrix_multiply '( ( 1 2 3 ) ( 3 4 5) (6 7 8) ) '( (4 5 6) ( 7 8 9)  ( 1 2 3) ) )	)
+)
 
-;(display (matrix_matrix_multiply '( ( 1 2 3 ) ( 3 4 5) (6 7 8) ) '( (4 5 6) ( 7 8 9)  ( 1 2 3) ) )
-(display (matrix_matrix_multiply '( ( 1 2 )) '( (4 5 6) ( 7 8 9)) )
+(main)
+
+
+
+
+
+
+
