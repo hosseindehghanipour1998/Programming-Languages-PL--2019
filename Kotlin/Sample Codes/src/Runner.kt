@@ -48,5 +48,38 @@ fun main(args: Array<String>) {
     }
 
     //===================== CONDITIONALS ========================
+
+    //Using pure If/Else
+    var age = 6
+    if ( age < 18){
+        println("You are not older than legal age.")
+    }
+    else if ( age > 18 ){
+        println("you shall enter")
+    }
+
+    else if ( (age > 8) && (age < 18)){
+        println("Not a chance.")
+    }
+    else{
+        println("Go home Son")
+    }
+    // When works as Switch/Case in other languages
+    when(age){
+        0,1,2,4 -> println("Go to Preschool")
+        5 -> println("go to kindergarten")
+        in 6 .. 17 -> {
+            println("Your Age is $age")
+            var difference = 18 - age
+            println("You should wait for $difference years to be able to enter.")
+        }
+        else ->{
+            println("Get in ... welcome")
+        }
+    }
+
+    //========================= LOOPING ================
+
+
 }
 
