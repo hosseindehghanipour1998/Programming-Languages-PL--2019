@@ -243,9 +243,16 @@ fun main(args: Array<String>) {
     }
 
     //========================= Classes ================
+    val browser = Animal("Mike" , 2.0 , 13.5)
+    //val mike = Animal("Mike" , 0.0, 13.5) // Throws an exception due to the require fields.
+    browser.getInfo()
 
+    val doggy = Dog("Bravo" , 1.78 , 98.0 , "Jack" , 176 )
+    doggy.getInfo()
 
-
+    val tweety = Bird("Tweety" ,true)
+    tweety.fly(170.0)
+    //========================= Null Safety ================
 
 
 
@@ -300,5 +307,51 @@ fun functionOnList ( numList : Array<Int> , myFunction :(num : Int) -> Int ) : B
         println("MathOnList : ${myFunction(num)}")
     }
     return true
+}
+//Open in kotlin means final in java
+open class Animal ( val name : String , var height : Double , var weight : Double){
+    init {
+        // we write a RegEx here
+        val regex = Regex(".*\\d+.*")
+        // if the input numbers does not satisfy the require fields , it will throw an exception.
+        require(!name.matches(regex)){"Animal Names can't contain Numbers"}
+        require(height > 0 ){"Height must be greater than zero"}
+        require(weight > 0 ){"Weight must be greater than zero"}
+    }
+    // for being able to be overriden
+    open fun getInfo() : Unit{
+        println("Name :  $name | Height/Weight : $height / $weight")
+    }
+
+}
+// ":" means inheritance.
+class Dog (  name:String ,  height:Double ,  weight:Double , var Owner : String , var speed : Int) : Animal(name, height,weight  ) {
+
+    override fun getInfo():Unit {
+        super.getInfo()
+        println("Owner : $Owner | Speed : $speed")
+    }
+}
+//Interfaces :
+interface Flyable{
+    var canFly : Boolean
+    fun fly(distMile : Double) : Unit {
+        println("Can fly for $distMile Miles")
+    }
+}
+//A class in Kotlin can have a primary constructor and one or more secondary constructors.
+// The primary constructor is part of the class header: it goes after the class name (and optional type parameters).
+class Bird(override var canFly: Boolean = true) : Flyable{
+    var name : String = ""
+    override fun fly(distMile: Double) {
+        //super.fly(distMile)
+        if ( canFly ){
+            this.fly(distMile)
+        }
+    }
+    constructor(birdName : String , flies : Boolean) : this() {
+        this.name = birdName
+        this.canFly = flies
+    }
 }
 
