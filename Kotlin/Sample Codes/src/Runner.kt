@@ -29,6 +29,24 @@ fun main(args: Array<String>) {
 
 
     //===================== RANGES ========================
+    println()
+    println("*********  RANGES **********")
+    val oneToTen = 1 .. 10
+    val alphabets = "A".."Z"
+    println("R in Alphabet ? : ${alphabets.contains("R")}")
+    val tenToOne = 10.downTo(1)
+    val twoTo20 = 2.rangeTo(20)
 
+    val rng3 = oneToTen.step(3) // goes from 1 to 10 by 3 steps (1,4,7,10)
+    // print all elements in rng3
+    for ( x in rng3 ){
+        println("rng3 : $x")
+    }
+    //printing arrayElements in reverse
+    for ( x in tenToOne.reversed() ){
+        println("Reversed : $x")
+    }
+
+    //===================== CONDITIONALS ========================
 }
 
