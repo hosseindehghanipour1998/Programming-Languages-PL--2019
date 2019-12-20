@@ -146,8 +146,23 @@ fun main(args: Array<String>) {
     val factNum = 5
     println("Tail-Recursion of Factorial : $factNum -> ${fact(factNum)}")
 
+    //Filter
+    val numList = 1 .. 20
+    val evenList = numList.filter { it % 2 == 0 }
+    evenList.forEach { n -> println(n) }
+
     //Higher Order function : A function that accepts or returns another Function.
-    //Min 50:56
+    val mult3 = makeMathFunction(3)
+    println("High Order Function -> ${ mult3(5)} " )
+
+    // Filter on List - Type 2 :
+    val powerTwoLambda = { num1 : Int -> num1 * num1}
+    var testIntList = arrayOf(5 , 6 , 9 , 8)
+    functionOnList( testIntList , powerTwoLambda )
+
+
+    //========================= Collection Operators ================
+
 
 }
 
@@ -185,3 +200,15 @@ fun fact( x : Int) : Int {
     }
     return facTail(x,1)
 }
+
+//Higher Order
+// returns a function that returns an Integer.
+fun makeMathFunction( num1 : Int ) : (Int) -> Int = { num2 -> num1 * num2 }
+
+fun functionOnList ( numList : Array<Int> , myFunction :(num : Int) -> Int ) : Boolean{
+    for ( num in numList ){
+        println("MathOnList : ${myFunction(num)}")
+    }
+    return true
+}
+
