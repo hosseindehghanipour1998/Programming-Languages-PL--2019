@@ -3,6 +3,9 @@ import java.util.Random
 import javax.swing.Painter
 
 fun main(args: Array<String>) {
+    // =============== Variables =================
+    var varName : String = "Hossein" // Mutable
+    val courseName : String = "Programming Languages" // Constant
 
     // =============== ARRAYS =================
     var myArray = arrayOf(1 , 'a'..'z' , 1.23 , 2.25 , "Lion") ;
@@ -162,6 +165,13 @@ fun main(args: Array<String>) {
     var testIntList = arrayOf(5 , 6 , 9 , 8)
     functionOnList( testIntList , powerTwoLambda )
 
+    // Default values in function parameters
+    insertFamilyInfo("Erfan Sabouri")
+    insertFamilyInfo()
+
+    //Method OverLoading
+    getInfo("John")
+    getInfo("John" , "Wick")
 
     //========================= Collection Operators ================
     println("********* COLLECTION OPERATORS *********")
@@ -305,6 +315,17 @@ fun fact( x : Int) : Int {
     return facTail(x,1)
 }
 
+fun insertFamilyInfo ( name : String = "UNKNOWN" , family : String = "UNKNOWN"){
+    println("First Name  : {$name} | Family Name : {$family }")
+
+}
+fun getInfo(name: String){
+    println("Hello My Name is {$name}")
+}
+fun getInfo(name: String , family: String){
+    println("Hello I am {$name} {$family}")
+}
+
 //Higher Order
 // returns a function that returns an Integer.
 fun makeMathFunction( num1 : Int ) : (Int) -> Int = { num2 -> num1 * num2 }
@@ -368,3 +389,13 @@ fun returnNull():String?{
     return null
 }
 
+// checking dynamic Scoping
+fun foo1() : Unit{
+    var numebrx : Int = 12
+    foo2()
+
+}
+
+fun foo2() : Unit{
+    println(numebrx)
+}
