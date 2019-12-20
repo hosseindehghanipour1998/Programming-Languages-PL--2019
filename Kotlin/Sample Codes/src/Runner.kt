@@ -225,6 +225,24 @@ fun main(args: Array<String>) {
     list1.forEach{ n -> println("SubList(Revised List) : $n ")}
 
     //========================= Maps ================
+    // which means the key is Int but the value can be in any kind
+    val map = mutableMapOf<Int,Any?>()
+    // we have made a map with two elements :
+        // 1 -> Dog
+        // 2 -> 25
+    val map2 = mutableMapOf(1 to "Dog" , 2 to 25)
+    map[1] = "Derek"
+    map[2] = 42
+
+    println("Map Size : ${map.size}")
+    map.put(3,"Horse")// add a new pair
+    map.remove(2)
+
+    for ( (x,y) in map){
+        println("Key -> Value: $x -> $y")
+    }
+
+    //========================= Classes ================
 
 
 
