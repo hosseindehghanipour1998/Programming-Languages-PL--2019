@@ -1,4 +1,6 @@
 import java.util.Random
+import javax.swing.Painter
+
 fun main(args: Array<String>) {
 
     // =============== ARRAYS =================
@@ -115,8 +117,71 @@ fun main(args: Array<String>) {
     for ( (index,value) in arr3.withIndex()){
         println("Index -> Value :: $index -> $value")
     }
-    //========================= Functions ================
+    println("## Foreach Loop ##")
+    //forEach loop :
+    arr3.forEach { e -> println("Value <- Index  : $e <- ${arr3.indexOf(e)}") }
 
+    //========================= Functions ================
+    println("Add Int 1 + 2 -> " + add(1,2).toInt())
+    println("Add Float: 2.4 + 3.6 -> ${addFloat(2.4 , 3.6) }")
+    //Using name d parameters :
+    //named parameters help us ignore the order of the passing arguments.
+    println("Add using named Parameters -> " + add(num2 = 8 , num1 = 7))
+    val name = "Hossein"
+    sayHello(name)
+
+    //returning more than one value
+    val ( result1 , result2 ) = nextTwo(7)
+    println("One : $result1 | Two : $result2")
+
+    //Passing Unlimited Argumetns :
+    println("Sum 1.. 5 : ${getSum(1,2,3,4,5)}")
+    println("Sum 1.. 8 : ${getSum(1,2,3,4,5,6,7,8)}")
+
+    //Using Function literals :
+    val multiply = { num1 : Int , num2 : Int , num3 :Int -> num1 * num2 * num3}
+    println("4 * 5 * 6 -> ${multiply(4,5,6)}")
+
+    // We can use tail-recursion :
+    val factNum = 5
+    println("Tail-Recursion of Factorial : $factNum -> ${fact(factNum)}")
+
+    //Higher Order function : A function that accepts or returns another Function.
+    //Min 50:56
 
 }
 
+// Here we have defined a function that gets two integers and returns a String.
+fun add ( num1 : Int , num2 : Int ) : String {
+    return ( num1 + num2).toString()
+}
+// Here we have defined a function that gets two Doubles and Directly returns the result.
+fun addFloat (num1: Double, num2: Double ) : Double = num1 + num2
+
+// instead of using Void we use Unit
+fun sayHello ( name : String ) : Unit {
+    println("Hello $name !")
+}
+
+// we can create a function that returns more than one value
+fun nextTwo ( num : Int) : Pair<Int , Int>{
+    return ( Pair (num+1 , num + 2))
+}
+//passing unlimited number if arguments to a function
+fun getSum( vararg numbers : Int ) : Int{
+    var sum = 0
+    numbers.forEach { n -> sum += n }
+    return sum
+}
+
+fun fact( x : Int) : Int {
+    tailrec fun facTail ( y : Int , z : Int ) : Int {
+        if ( y == 0 ){
+            return z
+        }
+        else {
+            return facTail(y-1 , y * z)
+        }
+    }
+    return facTail(x,1)
+}
