@@ -1,3 +1,4 @@
+import java.lang.IllegalArgumentException
 import java.util.Random
 import javax.swing.Painter
 
@@ -187,6 +188,21 @@ fun main(args: Array<String>) {
     times7.forEach{ n -> println(n)}
 
     //========================= Exception Handling ================
+    println("********* Exception Handling *********")
+    val divisor = 2
+    var dividend = 10
+    try{
+        if ( divisor == 0) {
+            throw  IllegalArgumentException("Can't divide by zero.")
+        }else{
+            println(" $dividend / $divisor = ${dividend/divisor}")
+        }
+    }catch (e : IllegalArgumentException){
+        println( e.message )
+    }
+
+    //========================= Collections ================
+
 
 }//End of Main Function
 
