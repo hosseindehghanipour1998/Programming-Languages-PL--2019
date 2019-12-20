@@ -205,13 +205,31 @@ fun main(args: Array<String>) {
     var list1 : MutableList<Int> = mutableListOf(1,2,3,4,5,6)
     val list2 : List<Int> = listOf(2 ,3 , 5 ,6)
     list1.add(9)
+
     println("1st item out of List -> ${list1.first()}")
+
     println("last item out of List -> ${list1.last()}")
+
     println("3rd item out of List -> ${list1[2]}")
-    var sublist = list2.subList(0,3) // because list2 is readOnly the returned list is also readOnly.
-    sublist.forEach{ n -> println("SubList : $n ")}
-    println("Length : ${list2.size}")
-    //1:06:06
+
+    var sublist2 = list2.subList(0,3)
+    var sublist1 = list1.subList(0,3)
+    // because list2 is readOnly the returned list "sublist2" is also readOnly.
+    //you can not clear it
+    sublist1.forEach{ n -> println("SubList : $n ")}
+    println("Length : ${list1.size}")
+    sublist1.clear()
+    list1.remove(1)
+    list1.removeAt(0)
+    list1[2] = 10
+    list1.forEach{ n -> println("SubList(Revised List) : $n ")}
+
+    //========================= Maps ================
+
+
+
+
+
 
 
 
