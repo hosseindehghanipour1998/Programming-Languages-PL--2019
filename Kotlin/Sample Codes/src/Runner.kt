@@ -122,6 +122,7 @@ fun main(args: Array<String>) {
     arr3.forEach { e -> println("Value <- Index  : $e <- ${arr3.indexOf(e)}") }
 
     //========================= Functions ================
+    println("********* FUNCTIONS *********")
     println("Add Int 1 + 2 -> " + add(1,2).toInt())
     println("Add Float: 2.4 + 3.6 -> ${addFloat(2.4 , 3.6) }")
     //Using name d parameters :
@@ -162,9 +163,32 @@ fun main(args: Array<String>) {
 
 
     //========================= Collection Operators ================
+    println("********* COLLECTION OPERATORS *********")
+    val numList2 = 1..20
+    val listSum = numList2.reduce{ x , y -> x + y}
+    println("Reduce Sum : $listSum")
 
+    val foldSum = numList2.fold(5){ x , y -> x + y }
+    println("foldSum : $foldSum")
+    //fold() This function helps to accumulate value starting with initial value, then apply operation from left to right to current accumulator value and each element
 
-}
+    println("Evens : ${numList2.any{it % 2 == 0}}")
+    //returns "True" if there exists an even number.
+
+    println("Evens : ${numList2.all { it % 2 == 0 }}")
+    //returns "True" if all of the numbers are even.
+
+    val biggerThan3 = numList2.filter { x -> x > 3}
+    biggerThan3.forEach{ n -> println("($n) is Bigger than 3")}
+
+    // Map :
+    println("## Map ##")
+    val times7 = numList2.map{ it * 7}
+    times7.forEach{ n -> println(n)}
+
+    //========================= Exception Handling ================
+
+}//End of Main Function
 
 // Here we have defined a function that gets two integers and returns a String.
 fun add ( num1 : Int , num2 : Int ) : String {
@@ -205,6 +229,7 @@ fun fact( x : Int) : Int {
 // returns a function that returns an Integer.
 fun makeMathFunction( num1 : Int ) : (Int) -> Int = { num2 -> num1 * num2 }
 
+// gets a "List" and a "Function" and applies the function on all elements of the list.
 fun functionOnList ( numList : Array<Int> , myFunction :(num : Int) -> Int ) : Boolean{
     for ( num in numList ){
         println("MathOnList : ${myFunction(num)}")
