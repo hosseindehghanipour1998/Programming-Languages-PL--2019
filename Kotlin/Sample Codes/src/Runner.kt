@@ -202,6 +202,19 @@ fun main(args: Array<String>) {
     }
 
     //========================= Collections ================
+    var list1 : MutableList<Int> = mutableListOf(1,2,3,4,5,6)
+    val list2 : List<Int> = listOf(2 ,3 , 5 ,6)
+    list1.add(9)
+    println("1st item out of List -> ${list1.first()}")
+    println("last item out of List -> ${list1.last()}")
+    println("3rd item out of List -> ${list1[2]}")
+    var sublist = list2.subList(0,3) // because list2 is readOnly the returned list is also readOnly.
+    sublist.forEach{ n -> println("SubList : $n ")}
+    println("Length : ${list2.size}")
+    //1:06:06
+
+
+
 
 
 }//End of Main Function
