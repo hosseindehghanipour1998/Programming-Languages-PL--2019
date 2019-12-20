@@ -253,7 +253,15 @@ fun main(args: Array<String>) {
     val tweety = Bird("Tweety" ,true)
     tweety.fly(170.0)
     //========================= Null Safety ================
-
+    //val nullVal : String = null //you can not directy assign a null in kotlin
+    val nullVal : String? = null //? means nullable
+    var nullVariable = returnNull()
+    if ( nullVariable != null){
+        println("Not null -> $nullVariable")
+    }
+    else{
+        println("Null it is -> $nullVariable ")
+    }
 
 
 
@@ -346,12 +354,17 @@ class Bird(override var canFly: Boolean = true) : Flyable{
     override fun fly(distMile: Double) {
         //super.fly(distMile)
         if ( canFly ){
-            this.fly(distMile)
+            println("Can Fly in $distMile Miles")
         }
     }
     constructor(birdName : String , flies : Boolean) : this() {
         this.name = birdName
         this.canFly = flies
     }
+}
+
+// returning null from a fucntion
+fun returnNull():String?{
+    return null
 }
 
