@@ -388,14 +388,3 @@ class Bird(override var canFly: Boolean = true) : Flyable{
 fun returnNull():String?{
     return null
 }
-
-// checking dynamic Scoping
-fun foo1() : Unit{
-    var numebrx : Int = 12
-    foo2()
-
-}
-
-fun foo2() : Unit{
-    println(numebrx)
-}
