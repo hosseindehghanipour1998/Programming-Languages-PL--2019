@@ -1,4 +1,4 @@
-
+import java.util.Random
 fun main(args: Array<String>) {
 
     // =============== ARRAYS =================
@@ -29,6 +29,7 @@ fun main(args: Array<String>) {
 
 
     //===================== RANGES ========================
+
     println()
     println("*********  RANGES **********")
     val oneToTen = 1 .. 10
@@ -48,7 +49,7 @@ fun main(args: Array<String>) {
     }
 
     //===================== CONDITIONALS ========================
-
+    println("********** CONDITIONALS **********")
     //Using pure If/Else
     var age = 6
     if ( age < 18){
@@ -64,7 +65,8 @@ fun main(args: Array<String>) {
     else{
         println("Go home Son")
     }
-    // When works as Switch/Case in other languages
+
+    // "When" works as Switch/Case in other languages
     when(age){
         0,1,2,4 -> println("Go to Preschool")
         5 -> println("go to kindergarten")
@@ -79,6 +81,41 @@ fun main(args: Array<String>) {
     }
 
     //========================= LOOPING ================
+    println("********** LOOPING **********")
+    for ( x in 1..10){
+        println("Looooooop : $x")
+    }
+    //guessing a number with "While Loop"
+    val rnd = Random() // creating an object of random class
+    val magicNum = rnd.nextInt(50) + 1
+    var guess = 0
+    while(guess != magicNum){
+        guess ++
+        println("$guess is Not Equal with $magicNum")
+    }
+    //determining the Even and Odd numbers
+    for ( x in 1..20){
+        if ( x % 2 == 0){
+            println("$x is Even")
+        }
+        else{
+            println("$x is Odd")
+        }
+        if ( x == 15 ){
+            break
+        }
+    }
+
+    //Accessing Array Elements
+    var arr3 : Array<Int> = arrayOf(7,4,0)
+    for ( i in arr3.indices){
+        println("Element ($i) : ${arr3[i]} ")
+    }
+
+    for ( (index,value) in arr3.withIndex()){
+        println("Index -> Value :: $index -> $value")
+    }
+    //========================= Functions ================
 
 
 }
